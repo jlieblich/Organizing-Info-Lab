@@ -16,7 +16,11 @@ public class Main {
      * @return An array of integers with two elements, the largest and smallest from the method parameter
      */
     public static int[] findLargestAndSmallest(int array[]){
-
+        int[] x = new int[2];
+        Arrays.sort(array);
+        x[1] = array[array.length-1];
+        x[0] = array[0];
+        return x;
     }
 
 
@@ -31,7 +35,15 @@ public class Main {
      * @param intList A List of integers of any size.
      * @return Sum of the two largest values
      */
-    public static int sumOfTwoLargest(List intList){
+    public static int sumOfTwoLargest(List<Integer> intList){
+        if(intList.size() == 0)
+            return 0;
+        else if(intList.size() == 1) {
+            return intList.get(0);
+        } else {
+            Collections.sort(intList);
+            return intList.get(intList.size()-1) + intList.get(intList.size()-2);
+        }
 
     }
 
@@ -50,8 +62,19 @@ public class Main {
      * @param intList A List of Integers that may or may not include duplicates
      * @return A List of Integers that doesn't contain duplicates.
      */
-    public static List removeDuplicatesFromList(List intList){
-
+    public static List<Integer> removeDuplicatesFromList(List<Integer> intList){
+        boolean[] exists = new boolean[10];
+        for(int i=0;i<10;i++) {
+            exists[i] = false;
+        }
+        List<Integer> result = new ArrayList<>();
+        for(int i=0;i<intList.size();i++) {
+            if(!exists[intList.get(i)]) {
+                result.add(intList.get(i));
+                exists[intList.get(i)] = true;
+            }
+        }
+        return result;
     }
 
 
@@ -78,6 +101,20 @@ public class Main {
      * @return Array of sorted integers, merged from array1 and array2
      */
     public static int[] mergeSortedArrays(int[] array1, int[] array2){
-        return null;
+        List<Integer> result = new ArrayList<>();
+        for (int i : array1) {
+            if (i != 0)
+                result.add(i);
+        }
+        for(int i : array2) {
+            if(i != 0)
+                result.add(i);
+        }
+        Collections.sort(result);
+        int[] resultArray = new int[result.size()];
+        for(int i=0;i<result.size();i++) {
+            resultArray[i] = result.get(i);
+        }
+        return resultArray;
     }
 }

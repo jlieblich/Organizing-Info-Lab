@@ -50,6 +50,6 @@ public class MainTest {
 
     @Test
     public void testMergeSortedArrays(){
-        //Assert.assertArrayEquals(new int[]{1,1,4,5,7,9,11},Main.mergeSortedArrays(new int[]{1,4,7,9,0,0,0},new int[]{1,5,11}));
+        Assert.assertArrayEquals(new int[]{1,1,4,5,7,9,11},Main.mergeSortedArrays(new int[]{1,4,7,9,0,0,0},new int[]{1,5,11}));
     }
 }
